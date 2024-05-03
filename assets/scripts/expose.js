@@ -18,8 +18,40 @@ function select_horn(event){
   audio.setAttribute("src", audio_path)
 }
 
+function select_volume(event){
+  // volume selected
+  let volume_level = event.target.value; // between 0 and 100
+  let volume_level_normalized = volume_level / 100; // between 0 and 1
+
+  // seleting the appropriate icon
+  let volume_type = -1;
+  if (volume_level == 0){
+    volume_type = 0;
+  }
+  else if (volume_level < 33){
+    volume_type = 1;
+  }
+  else if (volume_level < 67){
+    volume_type = 2;
+  }
+  else{
+    volume_type = 3;
+  }
+
+  let path = 'assets/icons/volume-level-' + volume_type + '.svg';
+
+  // set the correct volume icon
+  let div_volume_control = document.getElementById('volume-controls');
+  let volume_image = div_volume_control.querySelector('img');
+  volume_image.setAttribute("src", path);
+
+}
+
 function init() {
   
   let dropdown = document.querySelector('select')
   dropdown.addEventListener('change', event => select_horn(event))
+
+  let volume = document.getElementById('volume')
+  volume.addEventListener('change', event => select_volume(event))
 }
