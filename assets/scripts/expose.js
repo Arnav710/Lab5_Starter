@@ -1,5 +1,4 @@
 // expose.js
-
 window.addEventListener('DOMContentLoaded', init);
 
 function select_horn(event){
@@ -46,23 +45,31 @@ function select_volume(event){
   volume_image.setAttribute("src", path);
 
   // set the volume
-  let audio = document.querySelector('audio')
-  audio.volume = volume_level_normalized
+  let audio = document.querySelector('audio');
+  audio.volume = volume_level_normalized;
 }
 
 function play_audio(){
   let audio = document.querySelector('audio');
   audio.play();
+
+
+  // add confetti if the party horn is selectedf
+  if (audio.getAttribute('src') == 'assets/audio/party-horn.mp3'){
+    const jsConfetti = new JSConfetti();
+    jsConfetti.addConfetti();
+  }
+  
 }
 
 function init() {
   
-  let dropdown = document.querySelector('select')
-  dropdown.addEventListener('change', event => select_horn(event))
+  let dropdown = document.querySelector('select');
+  dropdown.addEventListener('change', event => select_horn(event));
 
-  let volume = document.getElementById('volume')
-  volume.addEventListener('change', event => select_volume(event))
+  let volume = document.getElementById('volume');
+  volume.addEventListener('change', event => select_volume(event));
 
-  let play_button  = document.querySelector('button')
-  play_button.addEventListener('click', play_audio)
+  let play_button  = document.querySelector('button');
+  play_button.addEventListener('click', play_audio);
 }
