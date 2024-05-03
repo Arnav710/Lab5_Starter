@@ -45,6 +45,14 @@ function select_volume(event){
   let volume_image = div_volume_control.querySelector('img');
   volume_image.setAttribute("src", path);
 
+  // set the volume
+  let audio = document.querySelector('audio')
+  audio.volume = volume_level_normalized
+}
+
+function play_audio(){
+  let audio = document.querySelector('audio');
+  audio.play();
 }
 
 function init() {
@@ -54,4 +62,7 @@ function init() {
 
   let volume = document.getElementById('volume')
   volume.addEventListener('change', event => select_volume(event))
+
+  let play_button  = document.querySelector('button')
+  play_button.addEventListener('click', play_audio)
 }
