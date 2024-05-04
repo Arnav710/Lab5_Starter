@@ -12,4 +12,4 @@ I would not use unit testing to test the "message" feature that allows you to se
 We can use unit testing to test the "max message length" feature. We can look at input of varying lengths, come up with expected outputs, and see that the match the actual output. We should consider lengths of 0, less than 80, equal to 80, and more than 80.
 
 
-I worked on this lab with Nicholas.
+I worked on this lab with alone.
