@@ -33,7 +33,17 @@ function speak(event){
       utterance.voice = voices[i];
     }
   }
+
+  // open smile when speaking
+  let image = document.querySelector('img')
+  image.setAttribute('src', 'assets/images/smiling-open.png')
+
   speechSynthesis.speak(utterance);  
+  
+  // back to closed smile when finish speaking
+  utterance.addEventListener("end", (event) => {
+    image.setAttribute('src', 'assets/images/smiling.png');
+  });
 }
 
 function init() {
